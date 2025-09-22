@@ -1,11 +1,9 @@
-//EN ESTE ARCHIVO SE VAN A MANEJAR TODAS LAS RUTAS API CON LAS QUE SE VA A INTERACTUAR DESDE EL FRONTEND
-
 package routes
 
 import (
-	"fmt"
+	"github.com/gofiber/fiber/v2"
 )
 
-func main() {
-	fmt.Printf("ROUTES")
+func SetupRoutes(app *fiber.App) {
+	api := app.Group("/api")
 }
