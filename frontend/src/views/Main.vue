@@ -1,11 +1,15 @@
 <script setup>
+import { RouterView } from 'vue-router'
 import SideNavbar from '../components/SideNavbar.vue';
 
 </script>
 
 <template>
-    <SideNavbar />
-    <div class="p-3">
-        
+    <div class="flex h-screen w-full">
+        <SideNavbar />
+
+        <main class="flex-grow p-6">
+            <router-view />
+        </main>
     </div>
 </template>
