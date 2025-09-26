@@ -8,45 +8,46 @@ import (
 // CATÁLOGOS
 
 type RolPersonal struct {
-	IDRol     uint   `json:"id_rol" gorm:"primaryKey"`
+	IDRol     uint   `json:"id_rol" gorm:"primaryKey;autoIncrement"`
 	NombreRol string `json:"nombre_rol" gorm:"size:50;unique;not null"`
 }
 
 type EstadoProyecto struct {
-	IDEstadoProyecto uint   `json:"id_estado_proyecto" gorm:"primaryKey"`
+	IDEstadoProyecto uint   `json:"id_estado_proyecto" gorm:"primaryKey;autoIncrement"`
 	NombreEstado     string `json:"nombre_estado" gorm:"size:50;unique;not null"`
 }
 
 type EstadoEntregable struct {
-	IDEstadoEntregable uint   `json:"id_estado_entregable" gorm:"primaryKey"`
+	IDEstadoEntregable uint   `json:"id_estado_entregable" gorm:"primaryKey;autoIncrement"`
 	NombreEstado       string `json:"nombre_estado" gorm:"size:50;unique;not null"`
 }
 
 type EstadoPago struct {
-	IDEstadoPago uint   `json:"id_estado_pago" gorm:"primaryKey"`
+	IDEstadoPago uint   `json:"id_estado_pago" gorm:"primaryKey;autoIncrement"`
 	NombreEstado string `json:"nombre_estado" gorm:"size:50;unique;not null"`
 }
 
 type TipoProyecto struct {
-	IDTipoProyecto uint   `json:"id_tipo_proyecto" gorm:"primaryKey"`
+	IDTipoProyecto uint   `json:"id_tipo_proyecto" gorm:"primaryKey;autoIncrement"`
 	NombreTipo     string `json:"nombre_tipo" gorm:"size:50;unique;not null"`
 }
 
 type TipoRecurso struct {
-	IDTipoRecurso uint   `json:"id_tipo_recurso" gorm:"primaryKey"`
+	IDTipoRecurso uint   `json:"id_tipo_recurso" gorm:"primaryKey;autoIncrement"`
 	NombreTipo    string `json:"nombre_tipo" gorm:"size:50;unique;not null"`
 }
 
 type CategoriaGasto struct {
-	IDCategoriaGasto uint   `json:"id_categoria_gasto" gorm:"primaryKey"`
+	IDCategoriaGasto uint   `json:"id_categoria_gasto" gorm:"primaryKey;autoIncrement"`
 	NombreCategoria  string `json:"nombre_categoria" gorm:"size:50;unique;not null"`
 }
 
 // ENTIDADES PRINCIPALES
 
 type Cliente struct {
-	IDCliente       uint      `json:"id_cliente" gorm:"primaryKey"`
+	IDCliente       uint      `json:"id_cliente" gorm:"primaryKey;autoIncrement"`
 	NombreCliente   string    `json:"nombre_cliente" gorm:"size:100;not null"`
+	CedulaCliente	string	  `json:"cedula_cliente" gorm:"size:9;not null"`
 	EmailCliente    string    `json:"email_cliente" gorm:"size:100;unique"`
 	TelefonoCliente string    `json:"telefono_cliente" gorm:"size:30"`
 	Proyectos       []Proyecto `gorm:"foreignKey:ClienteID"`
@@ -55,7 +56,7 @@ type Cliente struct {
 }
 
 type Locacion struct {
-	IDLocacion          uint   `json:"id_locacion" gorm:"primaryKey"`
+	IDLocacion          uint   `json:"id_locacion" gorm:"primaryKey;autoIncrement"`
 	NombreLocacion      string `json:"nombre_locacion" gorm:"size:100;not null"`
 	Direccion           string `json:"direccion" gorm:"size:200"`
 	DescripcionLocacion string `json:"descripcion_locacion" gorm:"size:255"`
@@ -64,7 +65,7 @@ type Locacion struct {
 }
 
 type Proyecto struct {
-	IDProyecto       uint       `json:"id_proyecto" gorm:"primaryKey"`
+	IDProyecto       uint       `json:"id_proyecto" gorm:"primaryKey;autoIncrement"`
 	NombreProyecto   string     `json:"nombre_proyecto" gorm:"size:100;not null"`
 	TipoProyectoID   uint       `json:"tipo_proyecto_id"`
 	EstadoProyectoID uint       `json:"estado_proyecto_id"`
@@ -89,8 +90,9 @@ type Proyecto struct {
 }
 
 type Personal struct {
-	IDPersonal     uint    `json:"id_personal" gorm:"primaryKey"`
+	IDPersonal     uint    `json:"id_personal" gorm:"primaryKey;autoIncrement"`
 	NombrePersonal string  `json:"nombre_personal" gorm:"size:100;not null"`
+	CedulaPersonal string  `json:"cedula_personal" gorm:"size:9;not null"`
 	RolID          *uint   `json:"rol_id"`
 	Salario        float64 `json:"salario" gorm:"not null"`
 	EmailPersonal  string  `json:"email_personal" gorm:"size:100;unique"`
@@ -102,7 +104,7 @@ type Personal struct {
 }
 
 type Contrato struct {
-	IDContrato          uint      `json:"id_contrato" gorm:"primaryKey"`
+	IDContrato          uint      `json:"id_contrato" gorm:"primaryKey;autoIncrement"`
 	ProyectoID          *uint     `json:"proyecto_id"`
 	ClienteID           *uint     `json:"cliente_id"`
 	FechaFirma          time.Time `json:"fecha_firma" gorm:"not null"`
@@ -114,7 +116,7 @@ type Contrato struct {
 }
 
 type Entregable struct {
-	IDEntregable        uint       `json:"id_entregable" gorm:"primaryKey"`
+	IDEntregable        uint       `json:"id_entregable" gorm:"primaryKey;autoIncrement"`
 	ProyectoID          uint       `json:"proyecto_id" gorm:"not null"`
 	Descripcion         string     `json:"descripcion" gorm:"size:255;not null"`
 	FechaEntregaEstimada *time.Time `json:"fecha_entrega_estimada"`
@@ -125,7 +127,7 @@ type Entregable struct {
 }
 
 type RecursoTecnico struct {
-	IDRecurso     uint    `json:"id_recurso" gorm:"primaryKey"`
+	IDRecurso     uint    `json:"id_recurso" gorm:"primaryKey;autoIncrement"`
 	NombreEquipo  string  `json:"nombre_equipo" gorm:"size:150;not null"`
 	TipoRecursoID *uint   `json:"tipo_recurso_id"`
 	LocacionID    *uint   `json:"locacion_id"`
@@ -138,7 +140,7 @@ type RecursoTecnico struct {
 // RELACIONES
 
 type AsignacionPersonal struct {
-	IDAsignacion    uint      `json:"id_asignacion" gorm:"primaryKey"`
+	IDAsignacion    uint      `json:"id_asignacion" gorm:"primaryKey;autoIncrement"`
 	ProyectoID      uint      `json:"proyecto_id" gorm:"not null"`
 	PersonalID      uint      `json:"personal_id" gorm:"not null"`
 	HorasTrabajadas float64   `json:"horas_trabajadas" gorm:"not null"`
@@ -150,7 +152,7 @@ type AsignacionPersonal struct {
 }
 
 type UsoRecurso struct {
-	IDUso          uint       `json:"id_uso" gorm:"primaryKey"`
+	IDUso          uint       `json:"id_uso" gorm:"primaryKey;autoIncrement"`
 	ProyectoID     uint       `json:"proyecto_id" gorm:"not null"`
 	RecursoID      uint       `json:"recurso_id" gorm:"not null"`
 	FechaInicioUso time.Time  `json:"fecha_inicio_uso" gorm:"not null"`
@@ -163,7 +165,7 @@ type UsoRecurso struct {
 // CONTABLE
 
 type Factura struct {
-	IDFactura    uint      `json:"id_factura" gorm:"primaryKey"`
+	IDFactura    uint      `json:"id_factura" gorm:"primaryKey;autoIncrement"`
 	ProyectoID   *uint     `json:"proyecto_id"`
 	ClienteID    *uint     `json:"cliente_id"`
 	FechaEmision time.Time `json:"fecha_emision" gorm:"not null"`
@@ -176,7 +178,7 @@ type Factura struct {
 }
 
 type Gasto struct {
-	IDGasto          uint      `json:"id_gasto" gorm:"primaryKey"`
+	IDGasto          uint      `json:"id_gasto" gorm:"primaryKey;autoIncrement"`
 	ProyectoID       uint      `json:"proyecto_id" gorm:"not null"`
 	DescripcionGasto string    `json:"descripcion_gasto" gorm:"size:255;not null"`
 	CategoriaGastoID *uint     `json:"categoria_gasto_id"`
@@ -188,7 +190,7 @@ type Gasto struct {
 }
 
 type PagoPersonal struct {
-	IDPago       uint      `json:"id_pago" gorm:"primaryKey"`
+	IDPago       uint      `json:"id_pago" gorm:"primaryKey;autoIncrement"`
 	PersonalID   uint      `json:"personal_id" gorm:"not null"`
 	ProyectoID   *uint     `json:"proyecto_id"`
 	AsignacionID *uint     `json:"asignacion_id"`
@@ -203,7 +205,7 @@ type PagoPersonal struct {
 // GESTOR (LOGIN)
 
 type Gestor struct {
-	ID        	uint      		`json:"id" gorm:"primaryKey"`
+	ID        	uint      		`json:"id" gorm:"primaryKey;autoIncrement"`
 	Nombre    	string    		`json:"nombre" gorm:"size:100;not null"`
 	Usuario   	string    		`json:"usuario" gorm:"size:50;unique;not null"`
 	Contrasena 	string   		`json:"contrasena" gorm:"size:255;not null"`
