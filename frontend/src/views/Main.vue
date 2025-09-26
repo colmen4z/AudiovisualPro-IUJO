@@ -5,4 +5,7 @@ import SideNavbar from '../components/SideNavbar.vue';
 
 <template>
     <SideNavbar />
+    <div class="p-3">
+        
+    </div>
 </template>

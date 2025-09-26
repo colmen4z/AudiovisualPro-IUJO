@@ -20,10 +20,6 @@ const router = createRouter({
         },
         {
             path: '/:pathMatch(.*)*',
-            redirect: '/'
-        },
-        {
-            path: '/:pathMatch(.*)*',
             name: 'NotFound',
             component: FourZeroFour
         }
