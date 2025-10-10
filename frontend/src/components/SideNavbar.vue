@@ -1,5 +1,18 @@
 <script setup>
-import { Icon } from "@iconify/vue";
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const logout = () => {
+    const conformacion = confirm("Esta seguro/a que desea cerrar sesion?")
+    if(!conformacion) {
+        return 0
+    }
+    localStorage.removeItem('jwt_token')
+    console.log("Sesion cerrada.")
+
+    router.push({ name: 'Login' })
+}
 </script>
 
 <template>
@@ -9,22 +22,24 @@ import { Icon } from "@iconify/vue";
         </div>
 
         <div class="flex flex-col mb-2">
-            <router-link to="/" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition"><Icon icon="mdi:home" :height="20" /> Home</router-link>
+            <router-link to="/" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Home</router-link>
         </div>
 
-        <div class="flex flex-col p-2">
+        <div class="flex flex-col p-2 gap-1">
 
             <p class="font-semibold mb-2 text-green-600 text-xl">Gestiones</p>
 
-            <router-link to="/gestor-proyecto" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition"><Icon icon="ix:project" :height="20" /> Proyectos</router-link>
+            <router-link to="/gestor-proyecto" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Proyectos</router-link>
 
-            <router-link to="/gestor-cliente" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition"><Icon icon="mdi:account" :height="20" /> Clientes</router-link>
+            <router-link to="/gestor-cliente" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Clientes</router-link>
 
-            <router-link to="/gestor-personal" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition"><Icon icon="mdi:account-hard-hat" :height="20" /> Personal</router-link>
+            <router-link to="/gestor-personal" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Personal</router-link>
 
-            <router-link to="/gestor-recursos" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition"><Icon icon="mdi:audio-video" :height="20" /> Recursos Tecnicos</router-link>
+            <router-link to="/gestor-recursos" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Recursos Tecnicos</router-link>
 
-            <router-link to="/gestor-locaciones" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition"><Icon icon="mdi:location" :height="20" /> Locaciones</router-link>
+            <router-link to="/gestor-locaciones" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Locaciones</router-link>
+
+            <button @click="logout" class="rounded hover:outline-0 p-2 hover:bg-pink-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-pink-500 transition">Cerrar Sesion</button>
 
         </div>
     </div>

@@ -3,6 +3,8 @@ package models
 import (
 	"gorm.io/gorm"
 	"time"
+
+	"github.com/golang-jwt/jwt/v5"
 )
 
 // CATÁLOGOS
@@ -208,10 +210,21 @@ type Gestor struct {
 	ID        	uint      		`json:"id" gorm:"primaryKey;autoIncrement"`
 	Nombre    	string    		`json:"nombre" gorm:"size:100;not null"`
 	Usuario   	string    		`json:"usuario" gorm:"size:50;unique;not null"`
-	Contrasena 	string   		`json:"contrasena" gorm:"size:255;not null"`
+	Contrasena 	string   		`json:"-" gorm:"size:255;not null"`
 	Email     	string    		`json:"email" gorm:"size:100;unique"`
 	Telefono  	string    		`json:"telefono" gorm:"size:30"`
 	CreatedAt 	time.Time 		`json:"created_at"`
 	UpdatedAt 	time.Time 		`json:"updated_at"`
 	DeletedAt 	gorm.DeletedAt 	`json:"deleted_at" gorm:"index"`
+}
+
+type LoginRequest struct {
+	Usuario string `json:"usuario"`
+	Contrasena string `json:"contrasena"`
+}
+
+type GestorClaims struct {
+	ID uint `json:"id"`
+	Usuario string `json:"usuario"`
+	jwt.RegisteredClaims
 }
