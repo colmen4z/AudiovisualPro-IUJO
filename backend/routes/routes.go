@@ -13,4 +13,9 @@ func SetupRoutes(app *fiber.App) {
 		clientes.Get("/", handlers.GetClientes)
 		clientes.Get("/:id_cliente", handlers.GetCliente)
 	}
+
+	auth := api.Group("/auth")
+	{
+		auth.Post("/login", handlers.Login)
+	}
 }

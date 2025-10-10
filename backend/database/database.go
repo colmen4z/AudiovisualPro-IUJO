@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"golang.org/x/crypto/bcrypt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"audiovisualpro/backend/models"
@@ -57,4 +58,44 @@ func ConnectDB() {
 		//GESTOR
 		&models.Gestor{},
 	)
+
+	createDefaultUser()
+}
+
+func createDefaultUser() {
+	defaultUser := os.Getenv("DEFAULT_USER")
+	defaultPassword := os.Getenv("DEFAULT_PASSWORD")
+
+	if defaultUser == "" || defaultPassword == "" {
+		log.Fatalf("Las variables de entorno 'DEFAULT_USER' y 'DEFAULT_PASSWORD' no estan configuradas.")
+		return
+	}
+
+	var gestor models.Gestor
+	result := DB.Where("usuario = ?", defaultUser).First(&gestor)
+
+	if result.Error == gorm.ErrRecordNotFound {
+		hashedPassword, err := bcrypt.GenerateFromPassword([]byte(defaultPassword), bcrypt.DefaultCost)
+		if err != nil {
+			log.Fatalf("Error al hashear la contraseña: %v\n", err)
+		}
+
+		newGestor := models.Gestor{
+			Nombre: "John Doe",
+			Usuario: defaultUser,
+			Contrasena: string(hashedPassword),
+			Email: "admin@audiovisualpro.com",
+			Telefono: "0412-1234567",
+		}
+
+		if err := DB.Create(&newGestor).Error; err != nil {
+			log.Fatalf("Error al crear usuario predeterminado: %v\n", err)
+		}
+
+		fmt.Printf("Gestor '%v' creado con exito", defaultUser)
+	} else if result.Error != nil {
+		log.Printf("Error al verificar el gestor: %v\n", result.Error)
+	} else {
+		fmt.Printf("Gestor '%v' ya existe", defaultUser)
+	}
 }

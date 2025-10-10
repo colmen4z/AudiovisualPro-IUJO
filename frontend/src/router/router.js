@@ -18,12 +18,14 @@ const router = createRouter({
         {
             path: "/login",
             name: "Login",
-            component: Login
+            component: Login,
+            meta: { requiresAuth: false }
         },
         {
             path: "/",
             name: "MainLayout",
             component: Main,
+            meta: { requiresAuth: true },
             children: [
                 {
                     path: "",
@@ -61,9 +63,24 @@ const router = createRouter({
         {
             path: '/:pathMatch(.*)*',
             name: 'NotFound',
-            component: FourZeroFour
+            component: FourZeroFour,
+            meta: { requiresAuth: false }
         }
     ]
 })
+
+router.beforeEach((to, from, next) => {
+    const isAuthenticated = localStorage.getItem('jwt_token')
+    const requiresAuth = to.matched.some(record => record.meta.requiresAuth !== false)
+    if (requiresAuth && !isAuthenticated) {
+        console.log('Ruta protegida. Redirigiendo a /login')
+        next({ name: 'Login' })
+    } else if (to.name === 'Login' && isAuthenticated) {
+        console.log('Usuario autenticado. Redirigiendo a /Home')
+        next({ path: '/' });
+    } else {
+        next()
+    }
+});
 
 export default router

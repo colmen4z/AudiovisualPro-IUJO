@@ -16,6 +16,10 @@ func main() {
 		log.Fatalf("Hubo un error al cargar el archivo .env.\nError: %v\n", err)
 	}
 
+	if os.Getenv("JWT_SECRET") == "" {
+		log.Fatalf("No se encuentra la variable de entorno 'JWT_SECRET'")
+	}
+
 	database.ConnectDB()
 
 	app := fiber.New()
