@@ -8,7 +8,7 @@ import { Icon } from "@iconify/vue"
 
         <div>
         	<div class="mb-3">
-        		<button class="bg-green-500 text-white p-3 rounded font-semibold text-md transition ease-in-out shadow-md hover:bg-green-600 hover:scale-102 hover:shadow-lg active:scale-[0.98] disabled:bg-green-300 flex items-center justify-center">
+        		<button class="bg-green-500 text-white p-3 rounded font-semibold text-md transition ease-in-out shadow-md hover:bg-green-600 hover:scale-102 hover:shadow-lg active:scale-[0.98] flex items-center justify-center cursor-pointer">
         			<Icon icon="mdi:account-add" width="25" heigth="25" class="mr-2" />
 	        		Agregar Cliente
 	        	</button>

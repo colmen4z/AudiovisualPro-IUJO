@@ -1,18 +1,28 @@
 <script setup>
+import { ref } from 'vue'
 import { Icon } from "@iconify/vue"
 import { useRouter } from 'vue-router'
 
+import LogoutView from '../components/Logout.vue'
+
 const router = useRouter()
 
-const logout = () => {
-    const conformacion = confirm("Esta seguro/a que desea cerrar sesion?")
-    if(!conformacion) {
-        return 0
-    }
-    localStorage.removeItem('jwt_token')
-    console.log("Sesion cerrada.")
+const logoutModalVisible = ref(false)
 
+const mostrarLogout = () => {
+    logoutModalVisible.value = true
+}
+
+const logout = () => {
+    localStorage.removeItem('jwt_token')
+    console.log('Sesion cerrada')
+
+    logoutModalVisible.value = false
     router.push({ name: 'Login' })
+}
+
+const cancelarLogout = () => {
+    logoutModalVisible.value = false
 }
 </script>
 
@@ -58,11 +68,12 @@ const logout = () => {
                 Locaciones
             </router-link>
 
-            <button @click="logout" class="rounded hover:outline-0 p-2 hover:bg-pink-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-pink-500 transition text-left flex items-center cursor-pointer">
+            <button @click="mostrarLogout" class="rounded hover:outline-0 p-2 hover:bg-pink-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-pink-500 transition text-left flex items-center cursor-pointer">
                 <Icon icon="material-symbols:logout" width="25" class="mr-1" />
                 Cerrar Sesion
             </button>
-
         </div>
     </div>
+
+    <LogoutView :isOpen="logoutModalVisible" @confirm="logout" @cancel="cancelarLogout" />
 </template>
