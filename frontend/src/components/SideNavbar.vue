@@ -39,7 +39,7 @@ const logout = () => {
 
             <router-link to="/gestor-locaciones" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Locaciones</router-link>
 
-            <button @click="logout" class="rounded hover:outline-0 p-2 hover:bg-pink-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-pink-500 transition">Cerrar Sesion</button>
+            <button @click="logout" class="rounded hover:outline-0 p-2 hover:bg-pink-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-pink-500 transition text-left">Cerrar Sesion</button>
 
         </div>
     </div>

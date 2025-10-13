@@ -49,7 +49,7 @@ type CategoriaGasto struct {
 type Cliente struct {
 	IDCliente       uint      `json:"id_cliente" gorm:"primaryKey;autoIncrement"`
 	NombreCliente   string    `json:"nombre_cliente" gorm:"size:100;not null"`
-	CedulaCliente	string	  `json:"cedula_cliente" gorm:"size:9;not null"`
+	RIFCliente		string	  `json:"rif_cliente" gorm:"size:10;not null"`
 	EmailCliente    string    `json:"email_cliente" gorm:"size:100;unique"`
 	TelefonoCliente string    `json:"telefono_cliente" gorm:"size:30"`
 	Proyectos       []Proyecto `gorm:"foreignKey:ClienteID"`
