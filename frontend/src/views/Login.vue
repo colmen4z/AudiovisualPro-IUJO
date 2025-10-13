@@ -64,7 +64,7 @@ const handleLogin = async () => {
 
             <div v-if="message" :class="[
                 'p-3 mb-4 rounded-lg font-medium text-sm transition duration-300 ease-in-out',
-                isError ? 'bg-red-100 text-red-700 border border-red-300' : 'bg-green-100 text-green-700 border border-green-300'
+                isError ? 'bg-pink-100 text-pink-700 border border-pink-300' : 'bg-green-100 text-green-700 border border-green-300'
             ]">
                 {{ message }}
             </div>

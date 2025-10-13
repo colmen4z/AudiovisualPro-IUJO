@@ -1,4 +1,5 @@
 <script setup>
+import { Icon } from "@iconify/vue"
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -22,24 +23,45 @@ const logout = () => {
         </div>
 
         <div class="flex flex-col mb-2">
-            <router-link to="/" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Home</router-link>
+            <router-link to="/" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition flex items-center">
+                <Icon icon="material-symbols-light:home" width="25" class="mr-1" />
+                Home
+            </router-link>
         </div>
 
         <div class="flex flex-col p-2 gap-1">
 
             <p class="font-semibold mb-2 text-green-600 text-xl">Gestiones</p>
 
-            <router-link to="/gestor-proyecto" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Proyectos</router-link>
+            <router-link to="/gestor-proyecto" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition flex items-center">
+                <Icon icon="ix:project" width="25" class="mr-1" />
+                Proyectos
+            </router-link>
 
-            <router-link to="/gestor-cliente" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Clientes</router-link>
+            <router-link to="/gestor-cliente" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition flex items-center">
+                <Icon icon="mdi:account" width="25" class="mr-1" />
+                Clientes
+            </router-link>
 
-            <router-link to="/gestor-personal" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Personal</router-link>
+            <router-link to="/gestor-personal" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition flex items-center">
+                <Icon icon="mdi:worker" width="25" class="mr-1" />
+                Personal
+            </router-link>
 
-            <router-link to="/gestor-recursos" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Recursos Tecnicos</router-link>
+            <router-link to="/gestor-recursos" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition flex items-center">
+                <Icon icon="material-symbols:camera" width="25" class="mr-1" />
+                Recursos Tecnicos
+            </router-link>
 
-            <router-link to="/gestor-locaciones" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition">Locaciones</router-link>
+            <router-link to="/gestor-locaciones" class="rounded hover:outline-0 p-2 hover:bg-green-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-green-500 transition flex items-center">
+                <Icon icon="mdi:location" width="25" class="mr-1" />
+                Locaciones
+            </router-link>
 
-            <button @click="logout" class="rounded hover:outline-0 p-2 hover:bg-pink-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-pink-500 transition text-left">Cerrar Sesion</button>
+            <button @click="logout" class="rounded hover:outline-0 p-2 hover:bg-pink-500 hover:text-white font-semibold hover:scale-105 focus:outline-2 focus:outline-offset-2 focus:outline-pink-500 transition text-left flex items-center cursor-pointer">
+                <Icon icon="material-symbols:logout" width="25" class="mr-1" />
+                Cerrar Sesion
+            </button>
 
         </div>
     </div>
