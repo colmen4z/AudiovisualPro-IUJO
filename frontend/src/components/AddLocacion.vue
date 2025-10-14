@@ -40,15 +40,15 @@ const limpiarCampos = () => {
 			<div class="mb-3">
 				<div class="mb-2">
 					<label for="nombre_locacion" class="uppercase font-semibold text-gray-500 text-xs ml-1">Nombre Locacion</label>
-					<input v-model="nameLocacionField" type="nombre_locacion" name="nombre_locacion" placeholder="Nombre" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
+					<input v-model="nameLocacionField" type="text" name="nombre_locacion" placeholder="Nombre" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
 				</div>
 				<div class="mb-2">
 					<label for="direccion_locacion" class="uppercase font-semibold text-gray-500 text-xs ml-1">Direccion</label>
-					<input v-model="direccionField" type="direccion_locacion" name="direccion_locacion" placeholder="Direccion" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
+					<input v-model="direccionField" type="text" name="direccion_locacion" placeholder="Direccion" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
 				</div>
 				<div class="mb-2">
 					<label for="descripcion_locacion" class="uppercase font-semibold text-gray-500 text-xs ml-1">Descripcion</label>
-					<textarea v-model="descripcionField" rows="2" type="descripcion_locacion" name="descripcion_locacion" placeholder="Descripcion" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50 resize-none"></textarea>
+					<textarea v-model="descripcionField" rows="2" type="text" name="descripcion_locacion" placeholder="Descripcion" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50 resize-none"></textarea>
 				</div>
 			</div>
 			<div>

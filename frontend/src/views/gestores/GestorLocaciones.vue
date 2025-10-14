@@ -61,6 +61,61 @@ const cerrarAddLocacion = () => {
 			                    	Avenida Venezuela entre avenida Simon Rodriguez y calle 30
 			                    </td>
 			                </tr>
+			                <tr class="border-b hover:bg-gray-50 transition duration-150">
+			                    <td class="py-4 px-4 font-medium text-gray-900">
+			                    	Catedral de Barquisimeto
+			                    </td>
+			                    <td class="py-4 px-4 hidden sm:table-cell">
+			                    	Avenida Venezuela
+			                    </td>
+			                    <td class="py-4 px-4">
+			                    	Avenida Venezuela entre avenida Simon Rodriguez y calle 30
+			                    </td>
+			                </tr>
+			                <tr class="border-b hover:bg-gray-50 transition duration-150">
+			                    <td class="py-4 px-4 font-medium text-gray-900">
+			                    	Catedral de Barquisimeto
+			                    </td>
+			                    <td class="py-4 px-4 hidden sm:table-cell">
+			                    	Avenida Venezuela
+			                    </td>
+			                    <td class="py-4 px-4">
+			                    	Avenida Venezuela entre avenida Simon Rodriguez y calle 30
+			                    </td>
+			                </tr>
+			                <tr class="border-b hover:bg-gray-50 transition duration-150">
+			                    <td class="py-4 px-4 font-medium text-gray-900">
+			                    	Catedral de Barquisimeto
+			                    </td>
+			                    <td class="py-4 px-4 hidden sm:table-cell">
+			                    	Avenida Venezuela
+			                    </td>
+			                    <td class="py-4 px-4">
+			                    	Avenida Venezuela entre avenida Simon Rodriguez y calle 30
+			                    </td>
+			                </tr>
+			                <tr class="border-b hover:bg-gray-50 transition duration-150">
+			                    <td class="py-4 px-4 font-medium text-gray-900">
+			                    	Catedral de Barquisimeto
+			                    </td>
+			                    <td class="py-4 px-4 hidden sm:table-cell">
+			                    	Avenida Venezuela
+			                    </td>
+			                    <td class="py-4 px-4">
+			                    	Avenida Venezuela entre avenida Simon Rodriguez y calle 30
+			                    </td>
+			                </tr>
+			                <tr class="border-b hover:bg-gray-50 transition duration-150">
+			                    <td class="py-4 px-4 font-medium text-gray-900">
+			                    	Catedral de Barquisimeto
+			                    </td>
+			                    <td class="py-4 px-4 hidden sm:table-cell">
+			                    	Avenida Venezuela
+			                    </td>
+			                    <td class="py-4 px-4">
+			                    	Avenida Venezuela entre avenida Simon Rodriguez y calle 30
+			                    </td>
+			                </tr>
 			            </tbody>
 			        </table>
 			    </div>

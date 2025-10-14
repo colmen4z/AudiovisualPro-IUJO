@@ -43,19 +43,19 @@ const limpiarCampos = () => {
 				<div class="grid grid-cols-2 gap-2">
 					<div>
 						<label for="nombre_cliente" class="uppercase font-semibold text-gray-500 text-xs ml-1">Nombre</label>
-						<input v-model="nombreField" type="nombre_cliente" name="nombre_cliente" placeholder="Nombre" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
+						<input v-model="nombreField" type="text" name="nombre_cliente" placeholder="Nombre" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
 					</div>
 					<div>
 						<label for="rif_cliente" class="uppercase font-semibold text-gray-500 text-xs ml-1">RIF</label>
-						<input v-model="rifField" type="rif_cliente" name="rif_cliente" placeholder="Nombre" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
+						<input v-model="rifField" type="text" name="rif_cliente" placeholder="Nombre" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
 					</div>
 					<div>
 						<label for="email_cliente" class="uppercase font-semibold text-gray-500 text-xs ml-1">Email</label>
-						<input v-model="emailField" type="email_cliente" name="email_cliente" placeholder="Email" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
+						<input v-model="emailField" type="text" name="email_cliente" placeholder="Email" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
 					</div>
 					<div>
 						<label for="telefono_cliente" class="uppercase font-semibold text-gray-500 text-xs">Telefono</label>
-						<input v-model="telefonoField" type="telefono_cliente" name="telefono_cliente" placeholder="Telefono" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
+						<input v-model="telefonoField" type="text" name="telefono_cliente" placeholder="Telefono" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
 					</div>
 				</div>
 			</div>
