@@ -1,5 +1,18 @@
 <script setup>
+import { ref } from 'vue'
 import { Icon } from "@iconify/vue"
+
+import AddClienteView from '../../components/AddCliente.vue'
+
+const addClienteModalVisible = ref(false)
+
+const mostrarAddCliente = () => {
+	addClienteModalVisible.value = true
+}
+
+const cerrarAddCliente = () => {
+	addClienteModalVisible.value = false
+}
 </script>
 
 <template>
@@ -8,7 +21,7 @@ import { Icon } from "@iconify/vue"
 
         <div>
         	<div class="mb-3">
-        		<button class="bg-green-500 text-white p-3 rounded font-semibold text-md transition ease-in-out shadow-md hover:bg-green-600 hover:scale-102 hover:shadow-lg active:scale-[0.98] flex items-center justify-center cursor-pointer">
+        		<button @click="mostrarAddCliente" class="bg-green-500 text-white p-3 rounded font-semibold text-md transition ease-in-out shadow-md hover:bg-green-600 hover:scale-102 hover:shadow-lg active:scale-[0.98] flex items-center justify-center cursor-pointer">
         			<Icon icon="mdi:account-add" width="25" heigth="25" class="mr-2" />
 	        		Agregar Cliente
 	        	</button>
@@ -130,4 +143,6 @@ import { Icon } from "@iconify/vue"
 		    </div>
         </div>
 	</div>
+
+	<AddClienteView :isOpen="addClienteModalVisible" @cancel="cerrarAddCliente" />
 </template>
