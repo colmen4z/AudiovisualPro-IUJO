@@ -28,7 +28,35 @@ const cerrarBackdrop = (event) => {
 				</button>
 			</div>
 			<div class="mb-3">
-				
+				<div class="grid grid-cols-2 gap-2">
+					<div>
+						<label for="nombre_personal" class="uppercase font-semibold text-gray-500 text-xs ml-1">Nombre</label>
+						<input type="text" name="nombre_personal" placeholder="Nombre" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
+					</div>
+					<div>
+						<label for="cedula_personal" class="uppercase font-semibold text-gray-500 text-xs ml-1">Cedula</label>
+						<input type="text" name="cedula_personal" placeholder="Cedula" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
+					</div>
+					<div>
+						<label for="rol_personal" class="uppercase font-semibold text-gray-500 text-xs ml-1">Rol</label>
+						<select name="rol_personal" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
+							<option disabled selected>Seleccione un rol...</option>
+							<option value="">Camarografo</option>
+						</select>
+					</div>
+					<div>
+						<label for="salario_personal">Salario</label>
+						<input type="number" min="0" step="0.01" name="salario_personal" placeholder="0.00" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
+					</div>
+					<div>
+						<label for="email_personal">Email</label>
+						<input type="text" name="email_personal" placeholder="Email" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
+					</div>
+					<div>
+						<label for="telefono_personal">Telefono</label>
+						<input type="text" name="telefono_personal" placeholder="Telefono" class="font-[450] border border-gray-300 rounded-lg p-3 w-full focus:outline-0 focus:ring-2 focus:ring-green-500 focus:border-green-500 hover:scale-101 transition ease-in-out disabled:bg-gray-50">
+					</div>
+				</div>
 			</div>
 			<div>
 				<div class="grid grid-cols-2 gap-2">
