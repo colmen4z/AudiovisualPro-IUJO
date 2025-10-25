@@ -1,0 +1,1 @@
+<template>gestion tipos</template>

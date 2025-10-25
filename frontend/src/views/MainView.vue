@@ -71,8 +71,8 @@ const togglePasswordVisibility = () => {
                     </button>
                 </form>
             </div>
-            <div class="bg-white rounded-2xl shadow-lg w-full max-w-sm p-8 border border-green-100">
-                
+            <div class="w-150 bg-white rounded-2xl shadow-lg max-w-sm p-8 border border-green-100">
+
             </div>
         </div>
     </div>
