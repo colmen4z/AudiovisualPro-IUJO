@@ -96,7 +96,7 @@ const logout = () => {
                 </h2>
                 <button
                     @click="toggleSidebar"
-                    class="text-green-600 font-bold text-lg hover:bg-green-500 hover:text-white transition p-1 rounded"
+                    class="text-green-500 font-bold text-lg hover:bg-green-500 hover:text-white transition p-1 rounded"
                 >
                     <Icon :icon="isOpen ? 'bxs:left-arrow' : 'bxs:right-arrow'" width="25" height="25" />
                 </button>
@@ -148,7 +148,7 @@ const logout = () => {
                     <button
                         @click="logout"
                         :class="[
-                            'mt-2 flex items-center font-semibold p-2 rounded-lg hover:bg-red-500 hover:text-white transition',
+                            'cursor-pointer mt-2 flex items-center font-semibold p-2 rounded-lg hover:bg-red-500 hover:text-white transition',
                             isOpen ? 'w-full' : ''
                         ]"
                     >

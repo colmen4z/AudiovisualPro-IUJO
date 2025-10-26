@@ -4,8 +4,12 @@ import { Icon } from '@iconify/vue'
 import api from '../services/api'
 import { useRouter } from 'vue-router'
 
+import Toast from '../components/Toast.vue'
+
 const error = ref(false)
 const loginMessage = ref('')
+
+const isLoading = ref(false)
 
 const showPassword = ref(false)
 
@@ -15,6 +19,8 @@ const pass_gestor = ref('')
 const router = useRouter()
 
 const handleLogin = async () => {
+    isLoading.value = true
+
     try {
         const res = await api.post('/login', {
             usuario_gestor: usuario_gestor.value,
@@ -25,6 +31,8 @@ const handleLogin = async () => {
     } catch (err) {
         error.value = true
         loginMessage.value = err.response?.data?.message || 'Error al iniciar sesion'
+    } finally {
+        isLoading.value = false
     }
 }
 
@@ -74,8 +82,13 @@ const togglePasswordVisibility = () => {
                         </div>
                     </div>
 
-                    <button type="submit" class="cursor-pointer mt-2 w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-lg transition-colors">
-                        Ingresar
+                    <button
+                        type="submit"
+                        class="cursor-pointer mt-2 w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                        :disabled="isLoading"
+                    >
+                        <span v-if="!isLoading">Ingresar</span>
+                        <span v-else>Cargando...</span>
                     </button>
                 </form>
             </div>
@@ -83,5 +96,10 @@ const togglePasswordVisibility = () => {
 
             </div>
         </div>
+        <Toast
+            v-model="isLoading"
+            message="Conectando..."
+            type="loading"
+        />
     </div>
 </template>
