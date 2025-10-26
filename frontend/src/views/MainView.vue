@@ -1,22 +1,30 @@
 <script setup>
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
+import api from '../services/api'
+import { useRouter } from 'vue-router'
 
 const error = ref(false)
 const loginMessage = ref('')
 
 const showPassword = ref(false)
 
-const loginForm = ref({
-    username: '',
-    password: '',
-})
+const usuario_gestor = ref('')
+const pass_gestor = ref('')
 
-const handleLogin = (e) => {
-    e.preventDefault()
-    if (!loginForm.value.username || !loginForm.value.password) {
+const router = useRouter()
+
+const handleLogin = async () => {
+    try {
+        const res = await api.post('/login', {
+            usuario_gestor: usuario_gestor.value,
+            pass_gestor: pass_gestor.value
+        })
+        localStorage.setItem('token', res.data.token)
+        router.push('/system')
+    } catch (err) {
         error.value = true
-        loginMessage.value = 'Complete todos los campos.'
+        loginMessage.value = err.response?.data?.message || 'Error al iniciar sesion'
     }
 }
 
@@ -31,7 +39,7 @@ const togglePasswordVisibility = () => {
             <div class="w-150 bg-white rounded-2xl shadow-lg max-w-sm p-8 border border-green-100">
                 <h1 class="text-center mb-4 font-bold text-green-600 text-xl">Inicio de Sesion</h1>
                 
-                <form @submit="handleLogin" class="space-y-4">
+                <form @submit.prevent="handleLogin" class="space-y-4">
                     <div v-if="error" class="flex items-center justify-center text-[15px] font-semibold border border-red-200 bg-red-100 p-2 rounded-lg text-center text-red-500">
                         <Icon icon="mdi:error" width="25" class="mr-2" />
                         {{ loginMessage }}
@@ -41,9 +49,9 @@ const togglePasswordVisibility = () => {
                         <label class="block text-sm text-gray-600 mb-1">Nombre de Usuario</label>
                         <input
                             type="text"
-                            v-model="loginForm.username"
+                            v-model="usuario_gestor"
                             placeholder="Usuario"
-                            class="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                            class="transition w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                         >
                     </div>
 
@@ -52,9 +60,9 @@ const togglePasswordVisibility = () => {
                         <div class="relative">
                             <input 
                                 :type="showPassword ? 'text' : 'password'"
-                                v-model="loginForm.password"
+                                v-model="pass_gestor"
                                 placeholder="Contraseña"
-                                class="w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                                class="transition w-full border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                             >
                             <button
                                 type="button"

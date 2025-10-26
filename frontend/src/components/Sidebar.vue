@@ -2,9 +2,12 @@
 import { RouterLink } from 'vue-router'
 import { ref } from 'vue'
 import { Icon } from '@iconify/vue'
+import { useRouter } from 'vue-router'
 
 const hoverMenu = ref(null)
 const isOpen = ref(true)
+
+const router = useRouter()
 
 const menus = [
     {
@@ -68,6 +71,14 @@ const menus = [
 
 const toggleSidebar = () => {
     isOpen.value = !isOpen.value
+}
+
+const logout = () => {
+    const confirmacion = confirm('Esta seguro/a que desea cerrar sesion?')
+    if (confirmacion) {
+        localStorage.removeItem('token')
+        router.push('/')
+    }
 }
 </script>
 
@@ -133,6 +144,18 @@ const toggleSidebar = () => {
                         </div>
                     </div>
                 </template>
+                <div class="border-t border-gray-200">
+                    <button
+                        @click="logout"
+                        :class="[
+                            'mt-2 flex items-center font-semibold p-2 rounded-lg hover:bg-red-500 hover:text-white transition',
+                            isOpen ? 'w-full' : ''
+                        ]"
+                    >
+                        <Icon icon="majesticons:logout-line" width="25" height="25" class="mr-2" />
+                        <span v-if="isOpen">Cerrar Sesion</span>
+                    </button>
+                </div>
             </nav>
         </div>
     </div>

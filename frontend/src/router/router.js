@@ -27,11 +27,13 @@ const routes = [
     {
         path: '/',
         name: 'MainView',
-        component: MainView
+        component: MainView,
+        meta: { requiresGuest: true}
     },
     {
         path: '/system',
         component: SystemView,
+        meta: { requiresAuth: true },
         children: [
             {
                 path: '',
@@ -125,6 +127,18 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes
+})
+
+router.beforeEach((to, from, next) => {
+    const token = localStorage.getItem('token')
+
+    if (to.meta.requiresAuth && !token) {
+        next('/')
+    } else if (to.meta.requiresGuest && token) {
+        next('/system')
+    } else {
+        next()
+    }
 })
 
 export default router
